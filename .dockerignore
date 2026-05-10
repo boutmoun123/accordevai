@@ -1,0 +1,11 @@
+.git
+.gitignore
+.next
+node_modules
+npm-debug.log*
+dev-*.log
+dev-*.err.log
+mobile-debug.log
+mobile-debug.err.log
+.chrome-headless-profile
+.vscode
