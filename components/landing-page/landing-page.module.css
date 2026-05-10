@@ -1604,65 +1604,70 @@ html[data-theme="dark"] .infographicFooterIconWrap {
   }
 
   .infographicHead h2 {
-    max-width: 12ch;
+    width: 100%;
+    max-width: 14ch;
     margin-inline: auto;
-    font-size: clamp(1.45rem, 8vw, 2rem);
-    line-height: 1.14;
-    letter-spacing: -0.025em;
+    font-size: clamp(1.3rem, 6.6vw, 1.9rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    white-space: normal;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
   }
 
   html[lang="ar"] .infographicHead h2 {
     max-width: none;
-    font-size: clamp(0.88rem, 4.1vw, 1.08rem);
-    line-height: 1.2;
+    font-size: clamp(0.98rem, 4vw, 1.28rem);
+    line-height: 1.22;
+    letter-spacing: 0;
     white-space: nowrap;
     text-wrap: nowrap;
     overflow-wrap: normal;
   }
 
   .infographicHead p {
-    max-width: 18rem;
+    width: 100%;
+    max-width: 24rem;
     margin-inline: auto;
-    font-size: 0.86rem;
-    line-height: 1.65;
+    font-size: clamp(0.88rem, 3.8vw, 0.96rem);
+    line-height: 1.7;
   }
 
   html[lang="en"] .infographicHead {
-    justify-items: start;
-    text-align: left;
+    justify-items: center;
+    text-align: center;
   }
 
   html[lang="en"] .infographicHead h2 {
-    --infographic-en-mobile-title-offset-x: 22px;
-    --infographic-en-mobile-title-offset-y: 0px;
-    max-width: none;
-    margin-inline: 0;
-    position: relative;
-    left: var(--infographic-en-mobile-title-offset-x);
-    top: var(--infographic-en-mobile-title-offset-y);
+    max-width: 15ch;
+    margin-inline: auto;
+    position: static;
+    left: auto;
+    top: auto;
+    white-space: normal;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
   }
 
   html[lang="en"] .infographicHead p {
-    --infographic-en-mobile-copy-offset-x: 40px;
-    --infographic-en-mobile-copy-offset-y: 0px;
-    max-width: none;
-    margin-inline: 0;
-    position: relative;
-    left: var(--infographic-en-mobile-copy-offset-x);
-    top: var(--infographic-en-mobile-copy-offset-y);
+    max-width: 24rem;
+    margin-inline: auto;
+    position: static;
+    left: auto;
+    top: auto;
   }
 
   .infographicGrid {
     gap: 18px;
-    justify-items: center;
+    justify-items: stretch;
   }
 
   .infographicCard {
-    width: 337px;
-    max-width: none;
+    width: 100%;
+    max-width: 100%;
     min-height: 214px;
     gap: 12px;
-    padding: 20px 18px 32px;
+    padding: 20px 18px 28px;
     border-radius: 30px;
     justify-self: stretch;
   }

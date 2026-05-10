@@ -16,13 +16,16 @@ const INFOGRAPHIC_ICONS = {
 
 export default function AIBenefitsInfographic({ content }) {
   const isArabic = content.lang === "ar";
-  const shellClassName = `${styles.infographicShell} ${isArabic ? styles.infographicShellAr : styles.infographicShellEn}`;
-  const headClassName = `${styles.infographicHead} ${isArabic ? styles.infographicHeadAr : styles.infographicHeadEn}`;
-  const footerPillClassName = `${styles.infographicFooterPill} ${isArabic ? styles.infographicFooterPillAr : styles.infographicFooterPillEn}`;
+  const footerPillClassName = [
+    styles.infographicFooterPill,
+    isArabic ? styles.infographicFooterPillAr : styles.infographicFooterPillEn,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <section id="top" className={styles.infographicSection}>
-      <div className={shellClassName}>
+      <div className={styles.infographicShell}>
         <span
           className={`${styles.infographicOrnament} ${styles.infographicOrnamentTop}`}
           aria-hidden="true"
@@ -32,7 +35,7 @@ export default function AIBenefitsInfographic({ content }) {
           aria-hidden="true"
         />
 
-        <div className={headClassName}>
+        <div className={styles.infographicHead}>
           {content.badge?.trim() ? <span className={styles.eyebrow}>{content.badge}</span> : null}
           <h2>{content.title}</h2>
           <p>{content.description}</p>
@@ -42,7 +45,7 @@ export default function AIBenefitsInfographic({ content }) {
           {content.items.map((item) => (
             <article
               key={item.title}
-              className={`${styles.infographicCard} ${isArabic ? styles.infographicCardAr : styles.infographicCardEn}`}
+              className={styles.infographicCard}
             >
               <span className={styles.infographicCardAccent} aria-hidden="true" />
               <div className={styles.infographicCardTop}>

@@ -71,6 +71,8 @@ export default function LandingPage() {
 
   useEffect(() => {
     document.documentElement.lang = content.lang;
+    document.documentElement.dir = content.dir;
+    document.body.dir = content.dir;
     document.title = content.meta.title;
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
 
