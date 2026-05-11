@@ -1,6 +1,8 @@
 import styles from "./landing-page.module.css";
 
-export default function CTASection({ content, links }) {
+export default function CTASection({ content, links, consultationHref }) {
+  const isExternalConsultation = consultationHref?.startsWith("https://");
+
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.ctaCard}>
@@ -12,10 +14,10 @@ export default function CTASection({ content, links }) {
 
         <div className={styles.ctaActions}>
           <a
-            href={links.gmailConsultation}
+            href={consultationHref}
             className={styles.primaryButton}
-            target="_blank"
-            rel="noreferrer"
+            target={isExternalConsultation ? "_blank" : undefined}
+            rel={isExternalConsultation ? "noreferrer" : undefined}
           >
             Gmail
           </a>

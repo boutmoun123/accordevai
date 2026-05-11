@@ -18,6 +18,7 @@ export default function Header({
   onNavigate,
 }) {
   const nextLanguage = language === "ar" ? "en" : "ar";
+  const isExternalCta = ctaHref?.startsWith("https://");
 
   return (
     <header className={styles.header}>
@@ -80,8 +81,8 @@ export default function Header({
             <a
               href={ctaHref}
               className={styles.primaryButton}
-              target="_blank"
-              rel="noreferrer"
+              target={isExternalCta ? "_blank" : undefined}
+              rel={isExternalCta ? "noreferrer" : undefined}
               onClick={() => onNavigate()}
             >
               {ctaLabel}

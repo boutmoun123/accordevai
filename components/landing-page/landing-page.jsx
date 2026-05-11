@@ -27,6 +27,12 @@ function isSupportedTheme(value) {
   return value === "light" || value === "dark";
 }
 
+function isMobileDevice() {
+  const userAgent = window.navigator.userAgent || "";
+
+  return /Android|iPhone|iPad|iPod|Mobile|IEMobile|Opera Mini/i.test(userAgent);
+}
+
 function buildContactLinks(contact) {
   const whatsappNumber = contact.whatsappNumber?.replace(/\D/g, "");
 
@@ -42,6 +48,7 @@ export default function LandingPage() {
   const [language, setLanguage] = useState("ar");
   const [theme, setTheme] = useState("light");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [consultationHref, setConsultationHref] = useState("");
 
   const content = landingContent[language];
   const links = buildContactLinks(content.contact);
@@ -68,6 +75,14 @@ export default function LandingPage() {
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setTheme(prefersDark ? "dark" : "light");
   }, []);
+
+  useEffect(() => {
+    const nextConsultationHref = isMobileDevice()
+      ? links.consultation
+      : links.gmailConsultation;
+
+    setConsultationHref(nextConsultationHref);
+  }, [links.consultation, links.gmailConsultation]);
 
   useEffect(() => {
     document.documentElement.lang = content.lang;
@@ -120,7 +135,7 @@ export default function LandingPage() {
         brand={content.brand}
         nav={content.nav}
         ctaLabel={content.headerCta}
-        ctaHref={links.gmailConsultation}
+        ctaHref={consultationHref || links.consultation}
         menuLabel={content.menuLabel}
         themeLabel={content.themeLabel}
         themeButton={content.themeButton}
@@ -143,7 +158,11 @@ export default function LandingPage() {
         <ProcessSection content={content.process} />
         <OutcomesSection content={content.outcomes} />
         <TargetAudienceSection content={content.audience} />
-        <CTASection content={content.cta} links={links} />
+        <CTASection
+          content={content.cta}
+          links={links}
+          consultationHref={consultationHref || links.consultation}
+        />
       </main>
 
       <Footer
