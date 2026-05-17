@@ -1,6 +1,9 @@
 .page {
+  --header-top-offset: 22px;
+  --header-reserved-space: 118px;
   position: relative;
   z-index: 0;
+  padding-top: var(--header-reserved-space);
 }
 
 .main {
@@ -36,12 +39,12 @@
 }
 
 .header {
-  position: -webkit-sticky;
-  position: sticky;
-  inset-block-start: 0;
+  position: fixed;
+  inset-block-start: var(--header-top-offset);
+  inset-inline: 0;
   z-index: 30;
   width: min(1160px, calc(100% - 40px));
-  margin: 22px auto 0;
+  margin: 0 auto;
 }
 
 .headerInner {
@@ -879,6 +882,22 @@ html[lang="ar"] .heroContent .sectionIntro h2 {
   grid-column: 1 / -1;
 }
 
+.serviceCardWithMedia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-direction: row;
+}
+
+.serviceContent {
+  display: grid;
+  grid-gap: 16px;
+  gap: 16px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
 .serviceHeader {
   display: flex;
   align-items: center;
@@ -897,6 +916,18 @@ html[lang="ar"] .heroContent .sectionIntro h2 {
 .serviceCardFull .pointList {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px 22px;
+}
+
+.serviceVisual {
+  flex: 0 1 520px;
+  min-width: 280px;
+}
+
+.serviceVisualImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .pointList li {
@@ -1418,9 +1449,13 @@ html[data-theme="dark"] .infographicFooterIconWrap {
 }
 
 @media (max-width: 900px) {
+  .page {
+    --header-top-offset: 12px;
+    --header-reserved-space: 102px;
+  }
+
   .header {
     width: min(100% - 24px, 1160px);
-    margin-top: 12px;
   }
 
   .headerInner {
@@ -1582,6 +1617,17 @@ html[data-theme="dark"] .infographicFooterIconWrap {
   .serviceCardFull .pointList {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .serviceCardWithMedia {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .serviceVisual {
+    flex: 0 0 auto;
+    min-width: 0;
+    width: 100%;
   }
 
   .infographicShell,
