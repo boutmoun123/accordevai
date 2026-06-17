@@ -59,6 +59,7 @@ export const landingContent = {
       ribbon: "حلول تقنية · أتمتة ذكية · نتائج حقيقية · نمو مستدام",
     },
     hero: {
+      h1: "أنظمة ذكاء اصطناعي وأتمتة للشركات",
       eyebrow: "شركة حلول AI وأتمتة للشركات",
       title: "حوّل شركتك إلى نظام\nذكي يعمل بكفاءة أعلى",
       description:
@@ -395,6 +396,7 @@ export const landingContent = {
     },
     hero: {
       eyebrow: "AI systems and automation for businesses",
+      h1: "AI Systems & Automation for Businesses",
       title: "Turn your business into a smarter system that runs with greater efficiency",
       description:
         "At Accordev AI, we build practical AI systems and automation that help businesses reduce costs, speed up execution, improve customer service, and increase team productivity.",

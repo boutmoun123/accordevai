@@ -18,6 +18,9 @@ import { landingContent } from "@/data/landing-content";
 
 const LANGUAGE_STORAGE_KEY = "accordev-language";
 const THEME_STORAGE_KEY = "accordev-theme";
+const SEO_TITLE = "Accordev AI | AI Systems & Automation for Businesses";
+const SEO_DESCRIPTION =
+  "Accordev AI helps businesses build AI systems, RAG assistants, chatbots, CRM automation, and workflow automation to reduce manual work, improve customer service, and increase productivity.";
 
 function isSupportedLanguage(value) {
   return value === "ar" || value === "en";
@@ -44,8 +47,8 @@ function buildContactLinks(contact) {
   };
 }
 
-export default function LandingPage() {
-  const [language, setLanguage] = useState("ar");
+export default function LandingPage({ initialLanguage = "en", lockLanguage = false }) {
+  const [language, setLanguage] = useState(initialLanguage);
   const [theme, setTheme] = useState("light");
   const [menuOpen, setMenuOpen] = useState(false);
   const [consultationHref, setConsultationHref] = useState("");
@@ -54,6 +57,12 @@ export default function LandingPage() {
   const links = buildContactLinks(content.contact);
 
   useEffect(() => {
+    if (lockLanguage) {
+      setLanguage(initialLanguage);
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, initialLanguage);
+      return;
+    }
+
     const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
     if (isSupportedLanguage(storedLanguage)) {
       setLanguage(storedLanguage);
@@ -63,7 +72,7 @@ export default function LandingPage() {
     const browserLanguage = window.navigator.language?.toLowerCase() ?? "";
     const nextLanguage = browserLanguage.startsWith("ar") ? "ar" : "en";
     setLanguage(nextLanguage);
-  }, []);
+  }, [initialLanguage, lockLanguage]);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
@@ -88,12 +97,12 @@ export default function LandingPage() {
     document.documentElement.lang = content.lang;
     document.documentElement.dir = content.dir;
     document.body.dir = content.dir;
-    document.title = content.meta.title;
+    document.title = SEO_TITLE;
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
 
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) {
-      descriptionTag.setAttribute("content", content.meta.description);
+      descriptionTag.setAttribute("content", SEO_DESCRIPTION);
     }
 
   }, [content, language]);
@@ -106,6 +115,10 @@ export default function LandingPage() {
 
   function handleLanguageChange(nextLanguage) {
     if (!isSupportedLanguage(nextLanguage)) {
+      return;
+    }
+
+    if (lockLanguage) {
       return;
     }
 

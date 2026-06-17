@@ -36,9 +36,7 @@ const displayFont = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Accordev AI | حلول ذكاء اصطناعي وأتمتة للشركات",
-  description:
-    "Accordev AI تبني أنظمة ذكاء اصطناعي وأتمتة عملية للشركات في الخليج والوطن العربي مع حضور في California - USA وخبرة تقنية منذ 2021.",
+  metadataBase: new URL("https://accordev.com"),
   icons: {
     icon: "/accordev-logo.jpg",
     shortcut: "/accordev-logo.jpg",
@@ -49,8 +47,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="ar"
-      dir="rtl"
+      lang="en"
+      dir="ltr"
       suppressHydrationWarning
       className={`${arabicFont.variable} ${uiFont.variable} ${displayFont.variable}`}
     >

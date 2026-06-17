@@ -9,8 +9,9 @@ export default function Hero({ content }) {
         <div className={styles.heroContent}>
           <SectionIntro
             eyebrow={content.eyebrow}
-            title={content.title}
+            title={content.h1 ?? content.title}
             description={content.description}
+            headingLevel="h1"
           />
 
           <div className={styles.heroTrustLine}>{content.trustLine}</div>

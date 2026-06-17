@@ -628,6 +628,7 @@ html[lang="ar"] .sectionIntro > .eyebrow {
   font-size: 1.78rem;
 }
 
+.sectionIntro h1,
 .sectionIntro h2,
 .ctaCopy h2 {
   margin: 0;
@@ -637,6 +638,7 @@ html[lang="ar"] .sectionIntro > .eyebrow {
   text-wrap: balance;
 }
 
+html[lang="ar"] .sectionIntro h1,
 html[lang="ar"] .sectionIntro h2,
 html[lang="ar"] .ctaCopy h2 {
   letter-spacing: 0;
@@ -644,12 +646,14 @@ html[lang="ar"] .ctaCopy h2 {
   line-height: 1.16;
 }
 
+.heroContent .sectionIntro h1,
 .heroContent .sectionIntro h2 {
   font-size: clamp(1.9rem, 3.9vw, 3.05rem);
   line-height: 1.18;
   white-space: pre-line;
 }
 
+html[lang="ar"] .heroContent .sectionIntro h1,
 html[lang="ar"] .heroContent .sectionIntro h2 {
   letter-spacing: 0;
   word-spacing: 0.03em;
@@ -1286,6 +1290,7 @@ html[lang="ar"] .heroContent .sectionIntro h2 {
   height: 16px;
 }
 
+html[lang="en"] .sectionIntro h1,
 html[lang="en"] .sectionIntro h2,
 html[lang="en"] .ctaCopy h2,
 html[lang="en"] .infographicHead h2,
@@ -1510,12 +1515,14 @@ html[data-theme="dark"] .infographicFooterIconWrap {
     padding: 22px;
   }
 
+  .sectionIntro h1,
   .sectionIntro h2,
   .ctaCopy h2,
   .infographicHead h2 {
     font-size: clamp(2rem, 9vw, 3rem);
   }
 
+  .heroContent .sectionIntro h1,
   .heroContent .sectionIntro h2 {
     font-size: clamp(1.8rem, 6.8vw, 2.55rem);
     line-height: 1.16;
@@ -1815,6 +1822,7 @@ html[data-theme="dark"] .infographicFooterIconWrap {
     line-height: 1.6;
   }
 
+  .heroContent .sectionIntro h1,
   .heroContent .sectionIntro h2 {
     font-size: clamp(1.5rem, 7.9vw, 2rem);
     line-height: 1.18;

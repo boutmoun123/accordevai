@@ -1,20 +1,20 @@
 import LandingPage from "@/components/landing-page/landing-page";
 import { JsonLd } from "@/components/seo-pages";
 import {
+  arabicPages,
   buildMetadata,
-  englishPages,
   organizationSchema,
   websiteSchema,
 } from "@/app/seo-config";
 
-export const metadata = buildMetadata(englishPages.home);
+export const metadata = buildMetadata(arabicPages.home, "ar");
 
-export default function HomePage() {
+export default function ArabicHomePage() {
   return (
     <>
       <JsonLd data={organizationSchema()} />
       <JsonLd data={websiteSchema()} />
-      <LandingPage initialLanguage="en" />
+      <LandingPage initialLanguage="ar" lockLanguage />
     </>
   );
 }
