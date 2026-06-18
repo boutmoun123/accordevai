@@ -1,4 +1,3 @@
-import { IBM_Plex_Sans_Arabic, Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const themeScript = `
@@ -17,24 +16,6 @@ const themeScript = `
   })();
 `;
 
-const arabicFont = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-arabic",
-});
-
-const uiFont = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-ui",
-});
-
-const displayFont = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-display",
-});
-
 export const metadata = {
   metadataBase: new URL("https://accordev.com"),
   icons: {
@@ -50,7 +31,6 @@ export default function RootLayout({ children }) {
       lang="en"
       dir="ltr"
       suppressHydrationWarning
-      className={`${arabicFont.variable} ${uiFont.variable} ${displayFont.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
