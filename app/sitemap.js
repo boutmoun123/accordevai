@@ -7,6 +7,6 @@ export default function sitemap() {
     url: absoluteUrl(path),
     lastModified,
     changeFrequency: path === "/" || path === "/ar" ? "weekly" : "monthly",
-    priority: path === "/" ? 1 : path.startsWith("/ar") ? 0.75 : 0.85,
+    priority: path === "/" ? 1 : path === "/ar/services/ai-company-syria" ? 0.85 : path.startsWith("/ar") ? 0.75 : 0.85,
   }));
 }

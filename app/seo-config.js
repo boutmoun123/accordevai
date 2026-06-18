@@ -1,6 +1,6 @@
 export const siteUrl = "https://accordev.com";
 export const brandName = "Accordev AI";
-export const contactEmail = "mb@acordev.com";
+export const contactEmail = "mb@accordev.com";
 
 export const forbiddenSafeLegacyPatterns = [
   ["car", "wash"],
@@ -375,6 +375,16 @@ export const arabicPages = {
     intro:
       "نصمم ونبني أنظمة ذكاء اصطناعي وأتمتة تقلل العمل اليدوي وتجعل العمليات اليومية أوضح وأسهل للمتابعة.",
   },
+  aiCompanySyria: {
+    path: "/ar/services/ai-company-syria",
+    title: "شركة AI للشركات في سوريا والمنطقة | Accordev AI",
+    description:
+      "تقدم Accordev AI حلول ذكاء اصطناعي وأتمتة للشركات في سوريا والمنطقة، تشمل أنظمة RAG، شات بوت ذكي، وكلاء AI، أتمتة CRM، وأتمتة سير العمل لتحسين الإنتاجية وخدمة العملاء.",
+    h1: "شركة AI تساعد شركتك على العمل بذكاء أكبر",
+    intro:
+      "خدمات ذكاء اصطناعي للشركات في سوريا والمنطقة تساعد الفرق على تقليل العمل اليدوي، تحسين خدمة العملاء، وتنظيم المعرفة والعمليات اليومية.",
+    noAlternates: true,
+  },
 };
 
 export const arabicServicePages = {
@@ -475,6 +485,7 @@ export const allIndexablePaths = [
   "/contact",
   "/ar",
   "/ar/services",
+  "/ar/services/ai-company-syria",
   "/ar/services/rag-systems",
   "/ar/services/ai-chatbots",
   "/ar/services/business-automation",
@@ -485,19 +496,23 @@ export function absoluteUrl(path) {
 }
 
 export function buildMetadata(page, locale = "en") {
-  const languages = {
-    [locale]: absoluteUrl(page.path),
-    "x-default": absoluteUrl(locale === "ar" ? Object.entries(routePairs).find(([, ar]) => ar === page.path)?.[0] ?? "/" : page.path),
-  };
+  let languages;
 
-  if (locale === "en" && routePairs[page.path]) {
-    languages.ar = absoluteUrl(routePairs[page.path]);
-  }
+  if (!page.noAlternates) {
+    languages = {
+      [locale]: absoluteUrl(page.path),
+      "x-default": absoluteUrl(locale === "ar" ? Object.entries(routePairs).find(([, ar]) => ar === page.path)?.[0] ?? "/" : page.path),
+    };
 
-  if (locale === "ar") {
-    const englishPath = Object.entries(routePairs).find(([, ar]) => ar === page.path)?.[0];
-    if (englishPath) {
-      languages.en = absoluteUrl(englishPath);
+    if (locale === "en" && routePairs[page.path]) {
+      languages.ar = absoluteUrl(routePairs[page.path]);
+    }
+
+    if (locale === "ar") {
+      const englishPath = Object.entries(routePairs).find(([, ar]) => ar === page.path)?.[0];
+      if (englishPath) {
+        languages.en = absoluteUrl(englishPath);
+      }
     }
   }
 
@@ -506,7 +521,7 @@ export function buildMetadata(page, locale = "en") {
     description: page.description,
     alternates: {
       canonical: absoluteUrl(page.path),
-      languages,
+      ...(languages ? { languages } : {}),
     },
     robots: {
       index: true,

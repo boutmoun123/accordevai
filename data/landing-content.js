@@ -326,7 +326,7 @@ export const landingContent = {
       rights: "© 2026 Accordev AI. All rights reserved.",
     },
     contact: {
-      email: "mb@acordev.com",
+      email: "mb@accordev.com",
       whatsappNumber: "+963990025000",
       consultationSubject: "طلب استشارة مجانية مع Accordev AI",
       consultationBody:
@@ -671,7 +671,7 @@ export const landingContent = {
       rights: "© 2026 Accordev AI. All rights reserved.",
     },
     contact: {
-      email: "mb@acordev.com",
+      email: "mb@accordev.com",
       whatsappNumber: "+963990025000",
       consultationSubject: "Request for a free consultation with Accordev AI",
       consultationBody:
